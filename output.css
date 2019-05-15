@@ -651,7 +651,7 @@ table {
 }
 
 .bg-red {
-  background-color: #e3342f;
+  background-color: #ed1b23;
 }
 
 .bg-red-light {
@@ -943,7 +943,7 @@ table {
 }
 
 .hover\:bg-red:hover {
-  background-color: #e3342f;
+  background-color: #ed1b23;
 }
 
 .hover\:bg-red-light:hover {
@@ -1235,7 +1235,7 @@ table {
 }
 
 .focus\:bg-red:focus {
-  background-color: #e3342f;
+  background-color: #ed1b23;
 }
 
 .focus\:bg-red-light:focus {
@@ -1599,7 +1599,7 @@ table {
 }
 
 .border-red {
-  border-color: #e3342f;
+  border-color: #ed1b23;
 }
 
 .border-red-light {
@@ -1891,7 +1891,7 @@ table {
 }
 
 .hover\:border-red:hover {
-  border-color: #e3342f;
+  border-color: #ed1b23;
 }
 
 .hover\:border-red-light:hover {
@@ -2183,7 +2183,7 @@ table {
 }
 
 .focus\:border-red:focus {
-  border-color: #e3342f;
+  border-color: #ed1b23;
 }
 
 .focus\:border-red-light:focus {
@@ -4938,7 +4938,7 @@ table {
 }
 
 .text-red {
-  color: #e3342f;
+  color: #ed1b23;
 }
 
 .text-red-light {
@@ -5230,7 +5230,7 @@ table {
 }
 
 .hover\:text-red:hover {
-  color: #e3342f;
+  color: #ed1b23;
 }
 
 .hover\:text-red-light:hover {
@@ -5522,7 +5522,7 @@ table {
 }
 
 .focus\:text-red:focus {
-  color: #e3342f;
+  color: #ed1b23;
 }
 
 .focus\:text-red-light:focus {
@@ -6263,7 +6263,7 @@ table {
   }
 
   .sm\:bg-red {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .sm\:bg-red-light {
@@ -6555,7 +6555,7 @@ table {
   }
 
   .sm\:hover\:bg-red:hover {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .sm\:hover\:bg-red-light:hover {
@@ -6847,7 +6847,7 @@ table {
   }
 
   .sm\:focus\:bg-red:focus {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .sm\:focus\:bg-red-light:focus {
@@ -7203,7 +7203,7 @@ table {
   }
 
   .sm\:border-red {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .sm\:border-red-light {
@@ -7495,7 +7495,7 @@ table {
   }
 
   .sm\:hover\:border-red:hover {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .sm\:hover\:border-red-light:hover {
@@ -7787,7 +7787,7 @@ table {
   }
 
   .sm\:focus\:border-red:focus {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .sm\:focus\:border-red-light:focus {
@@ -10526,7 +10526,7 @@ table {
   }
 
   .sm\:text-red {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .sm\:text-red-light {
@@ -10818,7 +10818,7 @@ table {
   }
 
   .sm\:hover\:text-red:hover {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .sm\:hover\:text-red-light:hover {
@@ -11110,7 +11110,7 @@ table {
   }
 
   .sm\:focus\:text-red:focus {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .sm\:focus\:text-red-light:focus {
@@ -11837,7 +11837,7 @@ table {
   }
 
   .md\:bg-red {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .md\:bg-red-light {
@@ -12129,7 +12129,7 @@ table {
   }
 
   .md\:hover\:bg-red:hover {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .md\:hover\:bg-red-light:hover {
@@ -12421,7 +12421,7 @@ table {
   }
 
   .md\:focus\:bg-red:focus {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .md\:focus\:bg-red-light:focus {
@@ -12777,7 +12777,7 @@ table {
   }
 
   .md\:border-red {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .md\:border-red-light {
@@ -13069,7 +13069,7 @@ table {
   }
 
   .md\:hover\:border-red:hover {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .md\:hover\:border-red-light:hover {
@@ -13361,7 +13361,7 @@ table {
   }
 
   .md\:focus\:border-red:focus {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .md\:focus\:border-red-light:focus {
@@ -16100,7 +16100,7 @@ table {
   }
 
   .md\:text-red {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .md\:text-red-light {
@@ -16392,7 +16392,7 @@ table {
   }
 
   .md\:hover\:text-red:hover {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .md\:hover\:text-red-light:hover {
@@ -16684,7 +16684,7 @@ table {
   }
 
   .md\:focus\:text-red:focus {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .md\:focus\:text-red-light:focus {
@@ -17411,7 +17411,7 @@ table {
   }
 
   .lg\:bg-red {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .lg\:bg-red-light {
@@ -17703,7 +17703,7 @@ table {
   }
 
   .lg\:hover\:bg-red:hover {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .lg\:hover\:bg-red-light:hover {
@@ -17995,7 +17995,7 @@ table {
   }
 
   .lg\:focus\:bg-red:focus {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .lg\:focus\:bg-red-light:focus {
@@ -18351,7 +18351,7 @@ table {
   }
 
   .lg\:border-red {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .lg\:border-red-light {
@@ -18643,7 +18643,7 @@ table {
   }
 
   .lg\:hover\:border-red:hover {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .lg\:hover\:border-red-light:hover {
@@ -18935,7 +18935,7 @@ table {
   }
 
   .lg\:focus\:border-red:focus {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .lg\:focus\:border-red-light:focus {
@@ -21674,7 +21674,7 @@ table {
   }
 
   .lg\:text-red {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .lg\:text-red-light {
@@ -21966,7 +21966,7 @@ table {
   }
 
   .lg\:hover\:text-red:hover {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .lg\:hover\:text-red-light:hover {
@@ -22258,7 +22258,7 @@ table {
   }
 
   .lg\:focus\:text-red:focus {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .lg\:focus\:text-red-light:focus {
@@ -22985,7 +22985,7 @@ table {
   }
 
   .xl\:bg-red {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .xl\:bg-red-light {
@@ -23277,7 +23277,7 @@ table {
   }
 
   .xl\:hover\:bg-red:hover {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .xl\:hover\:bg-red-light:hover {
@@ -23569,7 +23569,7 @@ table {
   }
 
   .xl\:focus\:bg-red:focus {
-    background-color: #e3342f;
+    background-color: #ed1b23;
   }
 
   .xl\:focus\:bg-red-light:focus {
@@ -23925,7 +23925,7 @@ table {
   }
 
   .xl\:border-red {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .xl\:border-red-light {
@@ -24217,7 +24217,7 @@ table {
   }
 
   .xl\:hover\:border-red:hover {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .xl\:hover\:border-red-light:hover {
@@ -24509,7 +24509,7 @@ table {
   }
 
   .xl\:focus\:border-red:focus {
-    border-color: #e3342f;
+    border-color: #ed1b23;
   }
 
   .xl\:focus\:border-red-light:focus {
@@ -27248,7 +27248,7 @@ table {
   }
 
   .xl\:text-red {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .xl\:text-red-light {
@@ -27540,7 +27540,7 @@ table {
   }
 
   .xl\:hover\:text-red:hover {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .xl\:hover\:text-red-light:hover {
@@ -27832,7 +27832,7 @@ table {
   }
 
   .xl\:focus\:text-red:focus {
-    color: #e3342f;
+    color: #ed1b23;
   }
 
   .xl\:focus\:text-red-light:focus {
