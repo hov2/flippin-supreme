@@ -1,4 +1,13 @@
 var listings = {
+    footwear: {
+        // add footwear listings here
+    },
+    apparel: {
+        // add apparel listings here
+    },
+    accessories: {
+        // add accessories listings here
+    },
     collectibles: {
         listing1: {
             name: "Supreme Boxing Gloves",
@@ -69,7 +78,7 @@ var listings = {
 // Loop through each collectible and display on page
 for (var listing in listings.collectibles) {
     var pageListings = document.querySelector("#pageListings");
-    pageListings.innerHTML += '<div class="max-w-sm rounded overflow-hidden shadow-lg"> <img class="w-full" src="' + listings.collectibles[listing].imgSrc + '" alt="' + listings.collectibles[listing].imgAlt + '"> <div class="px-6 pt-4"> <div class="font-bold text-xl mb-2">' + listings.collectibles[listing].name + '</div> <div class="flex pt-2 mb-2"> <div class="w-1/2 h-4">Ask Price</div> <div class="w-1/2 h-4">Avg. Sold</div> </div> </div> <div class="px-6"> <div class="flex pb-4"> <div style="color: #f687b3" class="w-1/2 h-12">$' + listings.collectibles[listing].askPrice + '</div> <div style="color: #f56565" class="w-1/2 h-12">$' + listings.collectibles[listing].avgSold + '</div> </div> </div> </div>';
+    pageListings.innerHTML += '<div class="max-w-sm rounded overflow-hidden shadow-lg rh-max-w-sm"> <img class="w-full" src="' + listings.collectibles[listing].imgSrc + '" alt="' + listings.collectibles[listing].imgAlt + '"> <div class="px-6 pt-4"> <div class="font-bold text-xl mb-2 rh-font-bold">' + listings.collectibles[listing].name + '</div> <div class="flex pt-2 mb-2 rh-flex"> <div class="w-1/2 h-4">Ask Price</div> <div class="w-1/2 h-4">Avg. Sold</div> </div> </div> <div class="px-6"> <div class="flex pb-4"> <div style="color: #f687b3" class="w-1/2 h-12 rh-prices">$' + listings.collectibles[listing].askPrice + '</div> <div style="color: #f56565" class="w-1/2 h-12 rh-prices">$' + listings.collectibles[listing].avgSold + '</div> </div> </div> </div>';
 }
 
 // Stop at 10 listings

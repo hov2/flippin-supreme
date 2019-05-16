@@ -6,7 +6,7 @@
   background-color: #FF0000;
 }
 
-.max-w-sm {
+.rh-max-w-sm {
   max-width: 34%;
   margin: 2rem;
   box-shadow: none;
@@ -14,23 +14,23 @@
   border-radius: 0;
 }
 
-.max-w-sm img {
+.rh-max-w-sm img {
   height: 300px;
 }
 
-.font-bold, .flex.mb-2 {
+.rh-font-bold, .rh-flex.mb-2 {
   text-align: center;
 }
 
-.font-bold {
+.rh-font-bold {
   text-transform: uppercase;
 }
 
-.flex.mb-2 {
+.rh-flex {
   color: #a0aec0;
 }
 
-.px-6 .h-12 {
+.rh-prices {
   padding-bottom: 1rem;
   text-align: center;
   font-size: 3rem;

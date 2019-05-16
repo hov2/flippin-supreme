@@ -24,7 +24,7 @@
     </div>
     <div id="modals"></div>
     <footer class="w-full sticky bg-black text-white p-20">
-      FOOTER
+      <button class="text-white" onclick="resetDemo()">Reset demo</button>
     </footer>
   </body>
 
@@ -36,5 +36,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <script src="modals.js"></script>
+
+<script>
+  function resetDemo() {
+    localStorage.clear();
+    location.reload();
+  }
+</script>
 
 </html>

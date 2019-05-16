@@ -9,12 +9,78 @@
   <body>
     <nav>
     </nav>
-    <div class="p-8">
-      SETTINGS
+    <div class="pt-10 pb-5 bg-grey-lighter">
+      <div class="px-32 bg-grey-lighter text-3xl font-bold">SETTINGS</div>
     </div>
+    <ul class="px-32 mb-10 bg-grey-lighter list-reset flex border-b">
+      <li class="-mb-px mr-1">
+        <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-red font-semibold no-underline" href="settings.html">Profile</a>
+      </li>
+      <li class="mr-1">
+        <a class="inline-block py-2 px-4 text-grey hover:text-grey-darker font-semibold no-underline" href="settings-account.html">Account</a>
+      </li>
+      <li class="mr-1">
+        <a class="inline-block py-2 px-4 text-grey hover:text-grey-darker font-semibold no-underline" href="#">Notifications</a>
+      </li>
+      <li class="mr-1">
+        <a class="inline-block py-2 px-4 text-grey hover:text-grey-darker font-semibold no-underline" href="#">Billing</a>
+      </li>
+    </ul>
+    <div class="px-32">
+      <div style="width: 40rem;">
+        <div class="text-2xl mb-5 pb-2 border-b border-grey" style="width: 40rem;">User Profile</div>
+        <!-- Full Name: <span id="settingsFirstName"></span> <span id="settingsLastName"></span><br><br> -->
+        <form>
+          <label class="block text-gray text-sm font-bold mb-2">
+            New Username
+          </label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray leading-tight focus:outline-none focus:shadow-outline" id="settingsUsername" type="text" value="">
+          <label class="block text-gray text-sm font-bold mb-2">
+              Bio
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray leading-tight focus:outline-none focus:shadow-outline" id="settingsBio" type="text" placeholder="Bio">
+          <label class="block text-gray text-sm font-bold mb-2">
+              Company
+            </label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray leading-tight focus:outline-none focus:shadow-outline" id="settingsCompany" type="text" placeholder="">
+          <label class="block text-gray text-sm font-bold mb-2">
+            Location
+          </label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray leading-tight focus:outline-none focus:shadow-outline" id="settingsLocation" type="text" placeholder="">
+          <button class="bg-black hover:bg-red text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5 mb-20" type="button" onclick="updateProfile();">
+            Update profile
+          </button>
+          <span id="loginProfileHelper" class="text-red text-base italic ml-5"></span>
+        </form>
+      </div>
+    </div>
+    
     <footer class="w-full sticky bg-black text-white p-20">
       FOOTER
     </footer>
   </body>
   <script src="script.js"></script>
+  <script>
+    document.querySelector("#settingsUsername").value = activeAccount.username;
+    if (activeAccount.bio == "") {
+      document.querySelector("#settingsBio").placeholder = "Tell us a bit about yourself";
+    } else {
+      document.querySelector("#settingsBio").value = activeAccount.bio;
+    };
+    if (activeAccount.company) {
+      document.querySelector("#settingsCompany").value = activeAccount.company;
+    };
+    if (activeAccount.location !== "") {
+      document.querySelector("#settingsLocation").value = activeAccount.location;
+    };
+    function updateProfile () {
+      activeAccount1.username = document.querySelector("#settingsUsername").value;
+      activeAccount1.bio = document.querySelector("#settingsBio").value;
+      activeAccount1.company = document.querySelector("#settingsCompany").value;
+      activeAccount1.location = document.querySelector("#settingsLocation").value;
+      storedAccounts1[activeUserKey1] = activeAccount1;
+      saveSession1();
+      document.getElementById("loginProfileHelper").innerHTML = "Saved!";
+    }
+  </script>
 </html>
