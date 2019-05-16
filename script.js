@@ -119,7 +119,7 @@ function titleCase(str) {
 
 // Display nav bar
 var nav = document.querySelector("nav");
-nav.innerHTML = '<div class="flex items-center justify-between flex-wrap p-6 shadow-md sticky"> <a href="index.html" class="text-black no-underline font-semibold text-xl tracking-tight"><img src="img/flippin-supreme-logo.jpg" class="align-bottom" style="height: 1.7rem"></a> <div class="text-sm"> <a href="about.html" id="navAbout" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red"> About </a> <ul class="inline-block mr-3"> <li><span class="text-black cursor-default">Browse</span> <ul class="dropdown"> <li><a href="apparel.html" class="text-black hover:text-red">Apparel</a></li> <li><a href="footwear.html" class="text-black hover:text-red">Footwear</a></li> <li><a href="accessories.html" class="text-black hover:text-red">Accessories</a></li> <li><a href="collectibles.html" class="text-black hover:text-red">Collectibles</a></li> </ul> </li> </ul> <a href="sell.html" id="navSell" class="inline-block text-black mt-4 mr-3 no-underline p-1 rounded border border-black hover:text-red hover:border-red"> Sell </a> <span id="myaccount" class=""></span> </div> </div>';
+nav.innerHTML = '<div class="flex items-center justify-between flex-wrap p-6 shadow-md sticky"> <a href="index.html" class="text-black no-underline font-semibold text-xl tracking-tight"><img src="img/flippin-supreme-logo.jpg" class="align-bottom" style="height: 1.7rem"></a> <div class="text-sm"> <a href="about.html" id="navAbout" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red"> About </a> <ul class="inline-block mr-3"> <li><span id="navBrowse" class="text-black cursor-default">Browse</span> <ul class="dropdown"> <li><a href="apparel.html" class="text-black hover:text-red">Apparel</a></li> <li><a href="footwear.html" class="text-black hover:text-red">Footwear</a></li> <li><a href="accessories.html" class="text-black hover:text-red">Accessories</a></li> <li><a href="collectibles.html" class="text-black hover:text-red">Collectibles</a></li> </ul> </li> </ul> <a href="sell.html" id="navSell" class="inline-block text-black mt-4 mr-3 no-underline p-1 rounded border border-black hover:text-red hover:border-red"> Sell </a> <span id="myaccount" class=""></span> </div> </div>';
 
 // Display "login / register" or "account"
 var myaccount = document.querySelector("#myaccount");
@@ -134,8 +134,8 @@ var path = window.location.pathname;
 var pagename = path.split("/").pop();
 if (pagename === "about.html") {
     document.querySelector("#navAbout").classList.add("text-red");
-} else if (pagename === "collectibles.html") {
-    document.querySelector("#navCat").classList.add("text-red");
+} else if (pagename === "accessories.html" || pagename === "apparel.html" || pagename === "footwear.html" || pagename === "collectibles.html") {
+    document.querySelector("#navBrowse").classList.add("text-red");
 } else if (pagename === "sell.html") {
     document.querySelector("#navSell").classList.remove("border");
     document.querySelector("#navSell").classList.remove("hover:text-red");
