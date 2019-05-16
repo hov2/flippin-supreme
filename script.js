@@ -160,7 +160,7 @@ if (activeUserKey1 == null) {
 // Logout function
 function logout() {
     activeUserKey1 = null;
-    saveSession();
+    saveSession1();
     // If in settings, return to homepage
     if (pagename === "settings.html") {
         window.location = "index.html";
