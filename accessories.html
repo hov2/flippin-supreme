@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Flippin' Supreme | Accessories</title>
+  <link rel="icon" type="image/png" href="favicon.jpg"/>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="output.css">
+  <link rel="stylesheet" href="listings.css">
+</head>
+
+<body>
+
+  <nav>
+  </nav>
+
+  <div id="section" class="flex flex-wrap">
+    <div class="w-full m-auto text-3xl uppercase">Accessories</div>
+    <div class="w-full">Exclusive Supreme Accessories</div>
+  </div>
+
+  <div id="pageListings" class="flex justify-center flex-wrap">
+  </div>
+  <div id="modals"></div>
+  <footer>
+  </footer>
+</body>
+<script src="script.js"></script>
+<script src="listings.js"></script>
+
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="modals.js"></script>
+
+<script>
+    // Loop through each product and display on page
+  for (var listing in listings.accessories) {
+      var pageListings = document.querySelector("#pageListings");
+      pageListings.innerHTML += '<div class="max-w-sm rounded overflow-hidden shadow-lg rh-max-w-sm"> <img class="w-full" src="' + listings.accessories[listing].imgSrc + '" alt="' + listings.accessories[listing].imgAlt + '"> <div class="px-6 pt-4"> <div class="font-bold text-xl mb-2 rh-font-bold">' + listings.accessories[listing].name + '</div> <div class="flex pt-2 mb-2 rh-flex"> <div class="w-1/2 h-4">Ask Price</div> <div class="w-1/2 h-4">Avg. Sold</div> </div> </div> <div class="px-6"> <div class="flex pb-4"> <div style="color: #f687b3" class="w-1/2 h-12 rh-prices">$' + listings.accessories[listing].askPrice + '</div> <div style="color: #f56565" class="w-1/2 h-12 rh-prices">$' + listings.accessories[listing].avgSold + '</div> </div> </div> </div>';
+  }
+  </script>
+
+</html>

@@ -60,3 +60,50 @@
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
+
+ /* custom css for dropdown nav */
+
+ nav a {
+ text-decoration: none;
+}
+
+nav ul {
+ background: white;
+   list-style: none;
+   padding-left: 0;
+}
+
+nav li {
+ background: white;
+   display: inline-block;
+   padding: .5rem;
+   position: relative;
+   text-decoration: none;
+}
+ 
+nav li:hover {
+   color: red;
+   cursor: pointer;
+}
+
+nav ul li ul {
+   visibility: hidden;
+ opacity: 0;
+ min-width: 5rem;
+   position: absolute;
+ transition: all 0.5s ease;
+   left: 0;
+ display: none;
+}
+
+nav ul li:hover > ul,
+ul li ul:hover {
+ visibility: visible;
+ opacity: 1;
+ display: block;
+}
+
+nav ul li ul li {
+   clear: both;
+ width: 100%;
+}
