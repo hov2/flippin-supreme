@@ -130,7 +130,7 @@ var myaccount = document.querySelector("#myaccount");
 if (activeUserKey == null) {
     myaccount.innerHTML = '<a href="#ex1" rel="modal:open" class="inline-block text-black mt-4 no-underline p-1 hover:text-red">Login</a> / <a href="#ex2" rel="modal:open" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red">Register</a>';
 } else {
-    myaccount.innerHTML = '<a href="settings.html" id="navSet" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red">Settings</a> <a href="#" onclick="logout();" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red">Sign Out</a>';
+    myaccount.innerHTML = '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">    <a href="settings.html" id="navSet" class="inline-block text-black mt-4 ml-3 no-underline p-1 hover:text-red"><i class="fas fa-user-circle mr-2" style="font-size:1.2rem"></i> <span id="settingsName">Settings</span></a> / <a href="#" onclick="logout();" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red">Sign Out</a>';
 }
 
 // Check active page, style active nav link 
@@ -145,20 +145,14 @@ if (pagename === "about.html") {
     document.querySelector("#navSell").classList.remove("hover:text-red");
     document.querySelector("#navSell").classList.add("bg-red");
     document.querySelector("#navSell").classList.add("text-white");
-} else if (pagename === "settings.html") {
+} else if (pagename === "settings.html" || pagename === "settings-account.html") {
     document.querySelector("#navSet").classList.add("text-red");
 }
 
-// Display welcome message on homepage
-var welcome = document.getElementsByClassName("welcome");
-if (activeUserKey1 == null) {
-    for (var i = 0; i < welcome.length; i++) {
-        welcome[i].innerHTML = '';
-    }
-} else {
-    for (var i = 0; i < welcome.length; i++) {
-        welcome[i].innerHTML = 'Hi ' + titleCase(activeAccount1.firstname) + "!<br><br>";
-    }
+// Display name on nav
+var settingsName = document.getElementById("settingsName");
+if (activeUserKey1 !== null) {
+    settingsName.innerHTML = titleCase(activeAccount1.firstname) + " " + titleCase(activeAccount1.lastname);
 }
 
 // Logout function
