@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="output.css">
     <link rel="icon" type="image/png" href="favicon.jpg"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="listings.css">
 
   </head>
   <body>
@@ -27,16 +27,18 @@
     <nav>
     </nav>
     
-    <div class="p-8">
-      <div class="welcome"></div>
-      FEATURED AUCTIONS
-
       
-    </div>
+      <div class="pt-10">
+          <div class="welcome"></div>
+          <div class="text-2xl font-bold flex justify-center">
+          Featured Auctions
+        </div>
+      </div>
+      <div id="pageListings" class="flex justify-center flex-wrap">
+        </div>
     <div id="modals"></div>
-    <footer class="w-full sticky bg-black text-white p-20">
-      <button class="text-white" onclick="resetDemo()">Reset demo</button>
-    </footer>
+    <footer></footer>
+    
   </body>
 
   <style>
@@ -93,6 +95,8 @@ a { color: white; text-decoration: none; }
 
 <script src="script.js"></script>
 
+<script src="listings.js"></script>
+
 <!-- jQuery Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
@@ -100,10 +104,11 @@ a { color: white; text-decoration: none; }
 <script src="modals.js"></script>
 
 <script>
-  function resetDemo() {
-    localStorage.clear();
-    location.reload();
-  }
+  // Loop through each product and display on page
+for (var listing in listings.collectibles) {
+    var pageListings = document.querySelector("#pageListings");
+    pageListings.innerHTML += '<div class="max-w-xs m-5 overflow-hidden border border-grey-dark" style=" width: 300px;" > <div class="flex justify-center pt-3" style="height:160px;"><img class="" style="height: 150px;" src="' + listings.collectibles[listing].imgSrc + '"  alt="' + listings.collectibles[listing].imgAlt + '"> </div><div class="px-6 pt-4"> <div class="font-bold text-xl mb-2 rh-font-bold">' + listings.collectibles[listing].name + '</div> <div class="flex pt-2 mb-2 rh-flex"> <div class="w-1/2 h-4">Ask Price</div> <div class="w-1/2 h-4">Avg. Sold</div> </div> </div> <div class="px-6"> <div class="flex pb-4"> <div style="color: #f687b3" class="w-1/2 h-12 rh-prices">$' + listings.collectibles[listing].askPrice + '</div> <div style="color: #f56565" class="w-1/2 h-12 rh-prices">$' + listings.collectibles[listing].avgSold + '</div> </div> </div> </div>';
+}
 </script>
 
 </html>
