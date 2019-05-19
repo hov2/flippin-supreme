@@ -15,6 +15,8 @@
   <nav>
   </nav>
 
+  <content>
+
   <div id="section" class="flex flex-wrap">
     <div class="w-full m-auto text-3xl uppercase">Apparel</div>
     <div class="w-full">Exclusive Supreme T-shirts, Hoodies, Jackets and More</div>
@@ -23,6 +25,8 @@
   <div id="pageListings" class="flex justify-center flex-wrap">
   </div>
   <div id="modals"></div>
+
+</content>
   <footer>
   </footer>
 </body>
@@ -35,12 +39,58 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <script src="modals.js"></script>
 
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"> </script> </li> <li> <script src="https://platform.linkedin.com/in.js" type="text/javascript"></script> <script type="IN/Share" data-url="https://val.codes/portfolio/flippin-supreme"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <script>
     // Loop through each product and display on page
   for (var listing in listings.apparel) {
       var pageListings = document.querySelector("#pageListings");
-      pageListings.innerHTML += '<div class="max-w-sm w-full rounded overflow-hidden shadow-lg rh-max-w-sm"> <div class="flex justify-center"><img class="w-auto" src="' + listings.apparel[listing].imgSrc + '" alt="' + listings.apparel[listing].imgAlt + '"></div> <div class="px-6 pt-4"> <div class="font-bold text-xl mb-2 rh-font-bold">' + listings.apparel[listing].name + '</div> <div class="flex pt-2 mb-2 rh-flex"> <div class="w-1/2 h-4">Ask Price</div> <div class="w-1/2 h-4">Avg. Sold</div> </div> </div> <div class="px-6"> <div class="flex pb-4"> <div style="color: #f687b3" class="w-1/2 h-12 rh-prices">$' + listings.apparel[listing].askPrice + '</div> <div style="color: #f56565" class="w-1/2 h-12 rh-prices">$' + listings.apparel[listing].avgSold + '</div> </div> </div> </div>';
+      pageListings.innerHTML += '<div onclick="productDetails(\'' + listing + '\');" class="cursor-pointer max-w-sm w-full rounded overflow-hidden shadow-lg rh-max-w-sm"> <div class="flex justify-center"><img class="w-auto" src="' + listings.apparel[listing].imgSrc + '" alt="' + listings.apparel[listing].imgAlt + '"></div> <div class="px-6 pt-4"> <div class="font-bold text-xl mb-2 rh-font-bold">' + listings.apparel[listing].name + '</div> <div class="flex pt-2 mb-2 rh-flex"> <div class="w-1/2 h-4">Ask Price</div> <div class="w-1/2 h-4">Avg. Sold</div> </div> </div> <div class="px-6"> <div class="flex pb-4"> <div style="color: #f687b3" class="w-1/2 h-12 rh-prices">$' + listings.apparel[listing].askPrice + '</div> <div style="color: #f56565" class="w-1/2 h-12 rh-prices">$' + listings.apparel[listing].avgSold + '</div> </div> </div> </div>';
   }
+
+function productDetails(listing) {
+  $('html,body').scrollTop(0);
+  document.querySelector("content").innerHTML = '<link rel="stylesheet" href="product-page/product_page.css"> <div class="flex px-3 mb-20"> <div class="flex items-center w-1/2 h-12"> <ul class="breadcrumb"> <li><a href="index.html">Home</a></li> <li><a href="apparel.html">Apparel</a></li> <li><span class="text-red">' + listings.apparel[listing].name + '</span></li> </ul> </div> <div class="flex items-center justify-end w-1/2 h-12 pr-6"> <div id="social-bubble"> <ul> <li> <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe> </li> <li> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Nice website!" data-url="https://val.codes/portfolio/flippin-supreme" data-via="ricardojames51" data-hashtags="FlippinSurpreme" data-related="" data-show-count="false"></a> </li> </ul> </div> </div> </div> <div class="flex mb-4"> <div class="flex justify-center w-full h-12 uppercase text-4xl px-6">' + listings.apparel[listing].name + '</div> </div> <div class="flex justify-center mb-8"> <div class="w-1/4 mx-6"> <img class="w-full" src="' + listings.apparel[listing].imgSrc + '" alt="' + listings.apparel[listing].imgAlt + '"> </div> <div class="flex items-center w-1/4 text-2xl pl-3"> <div class="flex flex-col"> <div class="flex flex-row"> <div id="buyNow" class="flex w-1/2 justify-center rounded-lg uppercase px-4 py-4 m-2"> Buy $' + listings.apparel[listing].askPrice + ' </div> <div id="bid" class="flex w-1/2 justify-center rounded-lg uppercase px-4 py-4 m-2"> Bid </div> </div> <div class="product-props bg-red text-white px-4 py-4 m-2"> Next Bidding Closing: 2 hours </div> <div class="product-props bg-red text-white px-4 py-4 m-2"> MSRP: $' + listings.apparel[listing].askPrice + ' </div> </div> </div> </div> <div class="flex mb-4"> <div class="flex justify-center w-full h-12 uppercase text-4xl px-6">Historical Sold Prices</div> </div> <div class="flex justify-center mb-4"> <div class="w-3/4 mx-6 mb-20"> <div id="chart_div" style="height: 500px"></div> </div> </div>';
+  loadChart();
+}
+
+function loadChart() {
+google.charts.load('current', { packages: ['corechart', 'line'] });
+google.charts.setOnLoadCallback(drawBackgroundColor);
+
+function drawBackgroundColor() {
+var data = new google.visualization.DataTable();
+data.addColumn('date', 'Date');
+data.addColumn('number', 'Sold Prices');
+
+data.addRows([
+  [new Date(2019, 1, 15), 40], [new Date(2019, 2, 15), 45], [new Date(2019, 3, 15), 60], [new Date(2019, 4, 15), 55], [new Date(2019, 5, 15), 50], [new Date(2019, 6, 15), 40],
+  [new Date(2019, 7, 15), 55], [new Date(2019, 8, 15), 50], [new Date(2019, 9, 15), 65]
+]);
+
+var formatter = new google.visualization.DateFormat({ formatType: 'short' });
+
+formatter.format(data, 0);
+
+var options = {
+  series: {
+    0: { color: '#FF0000' }
+  },
+  hAxis: {
+    title: 'Date',
+    format: 'MMM yyyy'
+  },
+  vAxis: {
+    title: 'Range of Prices'
+  },
+  backgroundColor: '#fff5f5'
+};
+
+var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+chart.draw(data, options);
+};
+}
   </script>
 
 </html>

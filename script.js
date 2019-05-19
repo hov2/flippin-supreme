@@ -119,7 +119,7 @@ function titleCase(str) {
 
 // Display nav bar
 var nav = document.querySelector("nav");
-nav.innerHTML = '<div class="flex items-center justify-between flex-wrap p-6 shadow-md sticky"> <a href="index.html" class="text-black no-underline font-semibold text-xl tracking-tight"><img src="img/flippin-supreme-logo.jpg" class="align-bottom" style="height: 1.7rem"></a> <div class="text-sm"><ul class="inline-block mr-3"> <li><span id="navBrowse" class="text-black cursor-default">Browse</span> <ul class="dropdown"> <li><a href="apparel.html" class="text-black hover:text-red">Apparel</a></li> <li><a href="footwear.html" class="text-black hover:text-red">Footwear</a></li> <li><a href="accessories.html" class="text-black hover:text-red">Accessories</a></li> <li><a href="collectibles.html" class="text-black hover:text-red">Collectibles</a></li> </ul> </li> </ul> <a href="sell.html" id="navSell" class="inline-block text-black mt-4 mr-3 no-underline p-1 rounded border border-black hover:text-red hover:border-red"> Sell </a> <span id="myaccount" class=""></span> </div> </div>';
+nav.innerHTML = '<div class="flex items-center justify-between flex-wrap p-6 shadow-md sticky"> <a href="index.html" class="text-black no-underline font-semibold text-xl tracking-tight"><img src="img/flippin-supreme-logo.jpg" class="align-bottom" style="height: 1.7rem"></a> <div class="text-sm"><ul class="inline-block mr-3"> <li><span id="navBrowse" class="text-black cursor-default">Browse</span> <ul class="dropdown"> <li><a href="apparel.html" class="text-black hover:text-red">Apparel</a></li> <li><a href="footwear.html" class="text-black hover:text-red">Footwear</a></li> <li><a href="accessories.html" class="text-black hover:text-red">Accessories</a></li> <li><a href="collectibles.html" class="text-black hover:text-red">Collectibles</a></li> </ul> </li> </ul> <span id="myaccount" class=""></span> </div> </div>';
 
 // Display footer
 var footer = document.querySelector("footer");
@@ -127,10 +127,10 @@ footer.innerHTML = '<div class="w-full sticky bg-black text-white p-20"> <button
 
 // Display "login / register" or "account"
 var myaccount = document.querySelector("#myaccount");
-if (activeUserKey == null) {
-    myaccount.innerHTML = '<a href="#ex1" rel="modal:open" class="inline-block text-black mt-4 no-underline p-1 hover:text-red">Login</a> / <a href="#ex2" rel="modal:open" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red">Register</a>';
-} else {
-    myaccount.innerHTML = '<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">    <a href="settings.html" id="navSet" class="inline-block text-black mt-4 ml-3 no-underline p-1 hover:text-red"><i class="fas fa-user-circle mr-2" style="font-size:1.2rem"></i> <span id="settingsName">Settings</span></a> / <a href="#" onclick="logout();" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red">Sign Out</a>';
+if (activeUserKey == null) { // if not logged in
+    myaccount.innerHTML = '<a href="#ex3" rel="modal:open" class="inline-block text-black mt-4 mr-3 no-underline p-1 rounded border border-black hover:text-red hover:border-red"> Sell </a>  <a href="#ex1" rel="modal:open" class="inline-block text-black mt-4 no-underline p-1 hover:text-red">Login</a> / <a href="#ex2" rel="modal:open" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red">Register</a>';
+} else { // if logged in
+    myaccount.innerHTML = '<a href="sell.html" id="navSell" class="inline-block text-black mt-4 mr-3 no-underline p-1 rounded border border-black hover:text-red hover:border-red"> Sell </a>  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">    <a href="settings.html" id="navSet" class="inline-block text-black mt-4 ml-3 no-underline p-1 hover:text-red"><i class="fas fa-user-circle mr-2" style="font-size:1.2rem"></i> <span id="settingsName">Settings</span></a> / <a href="#" onclick="logout();" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red">Sign Out</a>';
 }
 
 // Check active page, style active nav link 
