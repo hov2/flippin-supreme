@@ -119,7 +119,7 @@ function titleCase(str) {
 
 // Display nav bar
 var nav = document.querySelector("nav");
-nav.innerHTML = '<div class="flex items-center justify-between flex-wrap p-6 shadow-md sticky"> <a href="index.html" class="text-black no-underline font-semibold text-xl tracking-tight"><img src="img/flippin-supreme-logo.jpg" class="align-bottom" style="height: 1.7rem"></a> <div class="text-sm"><ul class="inline-block mr-3"> <li><span id="navBrowse" class="text-black cursor-default">Browse</span> <ul class="dropdown shadow-lg"> <li><a href="apparel.html" class="text-black hover:text-red">Apparel</a></li> <li><a href="footwear.html" class="text-black hover:text-red">Footwear</a></li> <li><a href="accessories.html" class="text-black hover:text-red">Accessories</a></li> <li><a href="collectibles.html" class="text-black hover:text-red">Collectibles</a></li> </ul> </li> </ul> <span id="myaccount" class=""></span> </div> </div>';
+nav.innerHTML = '<div class="flex items-center justify-between flex-wrap p-6 shadow-md sticky"> <a href="index.html" class="text-black no-underline font-semibold tracking-tight"><img src="img/flippin-supreme-logo.jpg" class="align-bottom" style="height: 1.8rem"></a> <div class="text-sm"><ul class="inline-block mr-3"> <li><span id="navBrowse" class="text-black cursor-default">Browse</span> <ul class="dropdown shadow-lg"> <li><a href="apparel.html" class="text-black hover:text-red">Apparel</a></li> <li><a href="footwear.html" class="text-black hover:text-red">Footwear</a></li> <li><a href="accessories.html" class="text-black hover:text-red">Accessories</a></li> <li><a href="collectibles.html" class="text-black hover:text-red">Collectibles</a></li> </ul> </li> </ul> <span id="myaccount" class=""></span> </div> </div>';
 
 // Display footer
 var footer = document.querySelector("footer");
@@ -151,7 +151,7 @@ if (pagename === "about.html") {
 
 // Display name on nav
 var settingsName = document.getElementById("settingsName");
-if (activeUserKey1 !== null) {
+if (activeUserKey1 !== null && activeUserKey1 !== undefined) {
     settingsName.innerHTML = titleCase(activeAccount1.firstname) + " " + titleCase(activeAccount1.lastname);
 }
 
@@ -209,3 +209,62 @@ function login() {
         }
     }
 }
+
+// Register function
+function register() {
+    var newFirstName = document.getElementById("grid-first-name").value;
+    var newLastName = document.getElementById("grid-last-name").value;
+    var newPassword = document.getElementById("grid-password").value;
+    var newEmail = document.getElementById("grid-email").value;
+    var newUsername = document.getElementById("grid-username").value;
+    var numOfIncomplete = 0;
+
+    if (newFirstName === "") {
+        document.getElementById("grid-first-name").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        document.getElementById("grid-first-name").classList.remove("border-red");
+    }
+    if (newLastName === "") {
+        document.getElementById("grid-last-name").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        document.getElementById("grid-last-name").classList.remove("border-red");
+    }
+    if (newPassword === "") {
+        document.getElementById("grid-password").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        document.getElementById("grid-password").classList.remove("border-red");
+    }
+    if (newLastName === "") {
+        document.getElementById("grid-last-name").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        document.getElementById("grid-last-name").classList.remove("border-red");
+    }
+    if (newEmail === "") {
+        document.getElementById("grid-email").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        document.getElementById("grid-email").classList.remove("border-red");
+    }
+    if (newUsername === "") {
+        document.getElementById("grid-username").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        document.getElementById("grid-username").classList.remove("border-red");
+    }
+    
+    if (numOfIncomplete > 0) {
+        document.getElementById('registerHelper').innerHTML = "All fields are required.";
+    } else {
+        // add user object
+        // log in
+        // reload page
+    }
+  }
+
+  function registerToSell() {
+      
+  }
