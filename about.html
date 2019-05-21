@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>About</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="output.css">
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+</head>
+
+<body>
+  <nav></nav>
+
+  <div class="flex mb-4">
+    <div class="w-1/2 text-4xl h-12 p-6 mb-4 animated flipInX delay-1s">About Flippin Supreme</div>
+  </div>
+
+  <div class="flex flex-row mb-4">
+    <div class="w-1/2 text-white text-xl h-full p-4 mx-12 my-2 animated flipInY delay-2s" style="background-color: #ff0000">
+      Long before the first line of code or wireframe, it was decided that Flippin' Supreme would find its niche as a first-price auction platform. Sometimes known as a blind auction, a bidder typically submits an offer on a lot after some due diligence (without knowing other offer amounts from other bidders). This simplifies the overall auction process, eliminates bidding wars and frowned-upon practices such as "auction sniping". In a first-price auction, since the bidder is making his/her decision based solely on information that is avaiable and not on emotion, the result is a more just system.
+    </div>
+  </div>
+
+  <div class="flex flex-row mb-4">
+    <div class="w-1/2 text-white text-xl h-full p-4 mx-12 my-2 animated flipInX delay-3s" style="background-color: #ff0000">
+      Peers such as eBay and StockX offer multiple products from a multitude of brands, which often lead to longer turnaround times for sellers and buyers. Hence, Flippin' Supreme is a Supreme-product-focused site only. Flippin' Supreme is a proof-of-concept that will help alleviate some of the ongoing issues with current models of direct procurement, consignment, and traditional auction. While we are a new online auction platform strictly for "flipping" Supreme merchandise, we'll strive to become an influential market maker in this niche retail space of urban streewear.
+    </div>
+  </div>
+
+  <div class="flex mb-4">
+    <div class="w-1/2 text-4xl h-12 px-6">Get In Touch</div>
+  </div>
+
+  <form class="w-full max-w-lg" action="https://formspree.io/valerie.s.ho@gmail.com" method="POST">
+    <div class="flex flex-wrap px-4 mx-6 mb-2">
+      
+      <div class="w-full md:w-1/2 px-2 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-name">
+          Name
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-grey rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" name="name" placeholder="Name">
+      </div>
+      <div class="w-full md:w-1/2 px-2">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+          E-mail
+        </label>
+        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-grey rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="email" name="_replyto" placeholder="Email">
+      </div>
+      <div class="md:flex-1 mt-2 mb:mt-0 md:px-2">
+        <textarea class="w-full p-4 border border-grey rounded focus:outline-none focus:bg-white focus:border-gray-500" name="message" placeholder="Your Message" rows="6"></textarea>
+      </div>
+      
+    </div>
+
+    <button id="submitForm" class="flex justify-center rounded-lg px-2 py-4 mx-12 my-4" style="background-color: #ff0000; color: #fff" type="submit">
+      Submit
+    </button>
+
+</form>
+<div id="modals"></div>
+<footer> <div class="mb-5 ml-5 mt-10"><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"> </script> </li> <li> <script src="https://platform.linkedin.com/in.js" type="text/javascript"></script> <script type="IN/Share" data-url="https://val.codes/portfolio/flippin-supreme"></script> </div></footer>
+
+</body>
+<script src="script.js"></script>
+
+
+<!-- jQuery Modal -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="modals.js"></script>
+
+</html>

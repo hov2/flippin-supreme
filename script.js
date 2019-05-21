@@ -126,11 +126,11 @@ function titleCase(str) {
 
 // Display nav bar
 var nav = document.querySelector("nav");
-nav.innerHTML = '<div class="flex items-center justify-between flex-wrap p-6 shadow-md sticky"> <a href="index.html" class="text-black no-underline font-semibold tracking-tight"><img src="img/flippin-supreme-logo.jpg" class="align-bottom" style="height: 1.8rem"></a> <div class="text-sm"><ul class="inline-block mr-3"> <li><span id="navBrowse" class="text-black cursor-default">Browse</span> <ul class="dropdown shadow-lg"> <li><a href="apparel.html" class="text-black hover:text-red">Apparel</a></li> <li><a href="footwear.html" class="text-black hover:text-red">Footwear</a></li> <li><a href="accessories.html" class="text-black hover:text-red">Accessories</a></li> <li><a href="collectibles.html" class="text-black hover:text-red">Collectibles</a></li> </ul> </li> </ul> <span id="myaccount" class=""></span> </div> </div>';
+nav.innerHTML = '<div class="flex items-center justify-between flex-wrap p-6 shadow-md sticky"> <a href="index.html" class="text-black no-underline font-semibold tracking-tight"><img src="img/flippin-supreme-logo.jpg" class="align-bottom" style="height: 1.8rem"></a> <div class="text-sm"><ul class="inline-block mr-3"> <li><a id="navAbout" href="about.html" class="text-black hover:text-red">About</a></li>  <li><span id="navBrowse" class="text-black cursor-default">Browse</span> <ul class="dropdown shadow-lg"> <li><a href="apparel.html" class="text-black hover:text-red">Apparel</a></li> <li><a href="footwear.html" class="text-black hover:text-red">Footwear</a></li> <li><a href="accessories.html" class="text-black hover:text-red">Accessories</a></li> <li><a href="collectibles.html" class="text-black hover:text-red">Collectibles</a></li> </ul> </li> </ul> <span id="myaccount" class=""></span> </div> </div>';
 
 // Display footer
 var footer = document.querySelector("footer");
-footer.innerHTML = '<div class="w-full sticky bg-black text-white p-20"> <button class="text-white" onclick="resetDemo()">Reset demo</button> </div>';
+footer.innerHTML += '<div class="w-full sticky bg-black text-white p-20"><button class="text-red rounded p-3 font-bold bg-grey hover:text-white hover:bg-red text-base" onclick="resetDemo()">RESET DEMO</button> </div>';
 
 // Display "login / register" or "account"
 var myaccount = document.querySelector("#myaccount");
@@ -159,6 +159,8 @@ if (pagename === "about.html") {
     document.querySelector("#navSell").classList.add("text-white");
 } else if (pagename === "settings.html" || pagename === "settings-account.html") {
     document.querySelector("#navSet").classList.add("text-red");
+}  else if (pagename === "about.html") {
+    document.querySelector("#navAbout").classList.add("text-red");
 }
 
 // Display name on nav

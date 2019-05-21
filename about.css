@@ -1,0 +1,8 @@
+#submitForm {
+  width: 10%;
+}
+
+#submitForm:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
