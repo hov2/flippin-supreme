@@ -171,12 +171,13 @@ if (activeUserKey1 !== null && activeUserKey1 !== undefined) {
 function logout() {
     activeUserKey1 = null;
     saveSession1();
+    window.location = "index.html";
     // If in settings, return to homepage
-    if (pagename === "settings.html") {
-        window.location = "index.html";
-    } else {
-        location.reload();
-    }
+    // if (pagename === "settings.html") {
+    //     window.location = "index.html";
+    // } else {
+    //     location.reload();
+    // }
 }
 
 // Reset demo function
@@ -259,7 +260,14 @@ function register() {
         document.getElementById("grid-email").classList.add("border-red");
         numOfIncomplete += 1;
     } else {
-        document.getElementById("grid-email").classList.remove("border-red");
+        if (isValidEmail(newEmail)) { // if new email is valid
+            document.getElementById("grid-email").classList.remove("border-red");
+            document.getElementById("registerEmailHelper").innerHTML = "";
+        } else { // if invalid
+            document.getElementById("grid-email").classList.add("border-red");
+            numOfIncomplete += 1;
+            document.getElementById("registerEmailHelper").innerHTML = "Please enter a valid email address.";
+        }
     }
     if (newUsername === "") {
         document.getElementById("grid-username").classList.add("border-red");
@@ -267,16 +275,117 @@ function register() {
     } else {
         document.getElementById("grid-username").classList.remove("border-red");
     }
-    
-    if (numOfIncomplete > 0) {
-        document.getElementById('registerHelper').innerHTML = "All fields are required.";
-    } else {
-        // add user object
-        // log in
-        // reload page
+
+    if (numOfIncomplete == 1 && newEmail !== "") { // if it's only email that is wrong
+        document.getElementById('registerHelper').innerHTML = "";
+    } else if (numOfIncomplete > 0) {
+            document.getElementById('registerHelper').innerHTML = "All fields are required.";
+    } else if (numOfIncomplete == 0) {
+        console.log(numOfIncomplete);
+        var userNum = Object.keys(storedAccounts1).length + 1;
+        storedAccounts1['user' + userNum] = {
+            username: newUsername,
+            email: newEmail,
+            firstname: newFirstName,
+            lastname: newLastName,
+            password: newPassword,
+            type: "standard",
+            bio: "",
+            company: "",
+            location: "",
+            listings: [],
+        }
+        activeUserKey1 = ['user' + userNum];
+        activeAccount1 = storedAccounts1['user' + userNum]; 
+      saveSession1();
+      location.reload();
     }
+    
   }
 
+  function isValidEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+      {
+        return true;
+      }
+        return false;
+    }
+
   function registerToSell() {
-      
+    var newFirstName = document.getElementById("grid-first-name2").value;
+    var newLastName = document.getElementById("grid-last-name2").value;
+    var newPassword = document.getElementById("grid-password2").value;
+    var newEmail = document.getElementById("grid-email2").value;
+    var newUsername = document.getElementById("grid-username2").value;
+    var numOfIncomplete = 0;
+
+    if (newFirstName === "") {
+        document.getElementById("grid-first-name2").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        document.getElementById("grid-first-name2").classList.remove("border-red");
+    }
+    if (newLastName === "") {
+        document.getElementById("grid-last-name2").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        document.getElementById("grid-last-name2").classList.remove("border-red");
+    }
+    if (newPassword === "") {
+        document.getElementById("grid-password2").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        document.getElementById("grid-password2").classList.remove("border-red");
+    }
+    if (newLastName === "") {
+        document.getElementById("grid-last-name2").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        document.getElementById("grid-last-name2").classList.remove("border-red");
+    }
+    if (newEmail === "") {
+        document.getElementById("grid-email2").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        if (isValidEmail(newEmail)) { // if new email is valid
+            document.getElementById("grid-email2").classList.remove("border-red");
+            document.getElementById("registerEmailHelper2").innerHTML = "";
+        } else { // if invalid
+            document.getElementById("grid-email2").classList.add("border-red");
+            numOfIncomplete += 1;
+            document.getElementById("registerEmailHelper2").innerHTML = "Please enter a valid email address.";
+        }
+    }
+    if (newUsername === "") {
+        document.getElementById("grid-username2").classList.add("border-red");
+        numOfIncomplete += 1;
+    } else {
+        document.getElementById("grid-username2").classList.remove("border-red");
+    }
+
+    if (numOfIncomplete == 1 && newEmail !== "") { // if it's only email that is wrong
+        document.getElementById('registerHelper2').innerHTML = "";
+    } else if (numOfIncomplete > 0) {
+            document.getElementById('registerHelper2').innerHTML = "All fields are required.";
+    } else if (numOfIncomplete == 0) {
+        console.log(numOfIncomplete);
+        var userNum = Object.keys(storedAccounts1).length + 1;
+        storedAccounts1['user' + userNum] = {
+            username: newUsername,
+            email: newEmail,
+            firstname: newFirstName,
+            lastname: newLastName,
+            password: newPassword,
+            type: "standard",
+            bio: "",
+            company: "",
+            location: "",
+            listings: [],
+        }
+        activeUserKey1 = ['user' + userNum];
+        activeAccount1 = storedAccounts1['user' + userNum]; 
+      saveSession1();
+      location.reload();
+    }
+    
   }

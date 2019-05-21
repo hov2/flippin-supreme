@@ -30,7 +30,6 @@
     <div class="px-32">
       <div style="width: 40rem;">
         <div class="text-2xl mb-5 pb-2 border-b border-grey" style="width: 40rem;">Account Settings</div>
-        <span class="text-sm font-bold mb-2">Email Address:</span> <span id="settingsEmail"></span><br><br>
         <form>
           <label class="block text-gray text-sm font-bold mb-2" for="password">
               Old Password
@@ -61,7 +60,6 @@
   </body>
   <script src="script.js"></script>
   <script>
-    document.querySelector("#settingsEmail").value = activeAccount1.email;
     // if passwords match, then run function
     function updateAccount() {
       activeAccount1.password = document.querySelector("#settingsNewPassword").value;
