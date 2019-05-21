@@ -4,7 +4,7 @@ var activeUserKey;
 var storedAccounts = { // "demoAccounts"
     user1: {
         username: "admin",
-        email: "",
+        email: "admin@flippinsupreme.com",
         firstname: "Admin",
         lastname: "",
         password: "supreme",
@@ -16,7 +16,7 @@ var storedAccounts = { // "demoAccounts"
     },
     user2: {
         username: "buyer",
-        email: "",
+        email: "buyer@flippinsupreme.com",
         firstname: "Oliver",
         lastname: "Huey",
         password: "supreme",
@@ -28,7 +28,7 @@ var storedAccounts = { // "demoAccounts"
     },
     user3: {
         username: "seller",
-        email: "",
+        email: "seller@flippinsupreme.com",
         firstname: "Catherine",
         lastname: "Rhodes",
         password: "supreme",
@@ -40,7 +40,7 @@ var storedAccounts = { // "demoAccounts"
     },
     user4: {
         username: "ricky",
-        email: "",
+        email: "rhuang@flippinsupreme.com",
         firstname: "Ricky",
         lastname: "Huang",
         password: "password",
@@ -52,7 +52,7 @@ var storedAccounts = { // "demoAccounts"
     },
     user5: {
         username: "val",
-        email: "valerie.s.ho@gmail.com",
+        email: "vho@flippinsupreme.com",
         firstname: "Val",
         lastname: "Ho",
         password: "password",
@@ -64,7 +64,7 @@ var storedAccounts = { // "demoAccounts"
     },
     user6: {
         username: "poe",
-        email: "",
+        email: "phwang@flippinsupreme.com",
         firstname: "Poe",
         lastname: "Hwang",
         password: "password",
