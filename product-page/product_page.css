@@ -59,3 +59,41 @@ ul.breadcrumb li a:hover {
   cursor: pointer;
   opacity: 0.8;
 }
+
+#buyForm {
+  display: none;
+}
+
+#buyButtonYes {
+  color: #fff;
+  background-color: #00FF00;
+}
+
+#buyButtonYes:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+#buyButtonNo {
+  color: #fff;
+  background-color: #1E90FF;
+}
+
+#buyButtonNo:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+#bidForm {
+  display: none;
+}
+
+#submitBidButton {
+  color: #fff;
+  background-color: #FFD700;
+}
+
+#submitBidButton:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

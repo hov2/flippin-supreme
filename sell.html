@@ -11,6 +11,7 @@
   <body>
     <nav>
     </nav>
+    <content>
     <div class="p-8">
       <div class="w-1/2 mx-auto">
         <div class="font-black text-3xl">
@@ -49,7 +50,7 @@
                 Image Preview
               </label>
               <div id="imagePreview" style="height:100px">
-                
+                <img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/regional-indicator-symbol-letter-x.png" alt="empty box" class="h-24 p-2">
               </div>
             <button class="bg-black hover:bg-red text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5 mb-10" type="button" onclick="sell();">
               Create Auction
@@ -58,12 +59,14 @@
           </form>
       </div>
     </div>
+  </content>
     <div id="modals"></div>
     <footer></footer>
   </body>
 
   <script src="script.js"></script>
   <script src="listings.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <!-- jQuery Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -79,9 +82,13 @@ function isValidURL(url) {
 
 function preview() {
   var imageURL = document.querySelector("#listImage").value;
-  if (isValidURL(imageURL)) {
+  if (imageURL == "" || !isValidURL(imageURL)) {
+    document.querySelector("#imagePreview").innerHTML = '<img src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/regional-indicator-symbol-letter-x.png" alt="empty box" class="h-24 p-2">';
+  } else {
+    if (isValidURL(imageURL)) {
     document.querySelector("#imagePreview").innerHTML = '<img src="' + imageURL + '" class="h-24 border p-2">';
-  }
+  } 
+}
 }
 
 function sell() {
@@ -89,11 +96,22 @@ function sell() {
   var productName = document.querySelector("#listName");
   var price = document.querySelector("#listPrice");
   var imageURL = document.querySelector("#listImage");
-  var listingsNum = Object.keys(listings1[category.value]).length + 1;
-  if (category.value !== "" && productName.value !== "" && price.value !== "" && imageURL.value !== "") {
-    if (isValidURL(imageURL.value)) { // successful listing
+  
+  if (category.value == "" || productName.value == "" || price.value == "" || imageURL.value == "") { // if any field is incomplete
+    if (imageURL.value !== "") { // if there is an image
+      if (!isValidURL(imageURL.value)) { // and the url is invalid
+       document.querySelector("#listAuctionHelper").innerHTML = "Image must be JPEG, JPG, GIF, or PNG format.";
+     } else { // if the url is valid
+      document.querySelector("#listAuctionHelper").innerHTML = "Missing fields! Please verify details above.";
+     }
+  } else { // if there is no image
+    document.querySelector("#listAuctionHelper").innerHTML = "Missing fields! Please verify details above.";
+  }
+  } else { // if all fields are complete
+    if (isValidURL(imageURL.value)) { // and url is valid
       console.log("listing is a go!!");
-      listings1[category.value]['listing' + listingsNum] = {
+      var listingNum = Object.keys(listings1[category.value]).length + 1;
+      listings1[category.value]['listing' + listingNum] = {
         name: productName.value,
         askPrice: price.value,
         imgSrc: imageURL.value,
@@ -101,13 +119,76 @@ function sell() {
         avgSold: '0',
       }
       saveSession1();
-    } else {
+      productDetails(category.value, listings1[category.value]['listing' + listingNum]);
+    } else { // if url is invalid
       document.querySelector("#listAuctionHelper").innerHTML = "Image must be JPEG, JPG, GIF, or PNG format.";
-    }
-  } else {
-    document.querySelector("#listAuctionHelper").innerHTML = "Missing fields! Please verify details above.";
   }
 }
+}
+
+function productDetails(category, listing) {
+  $('html,body').scrollTop(0);
+
+    document.querySelector("content").innerHTML = '<link rel="stylesheet" href="product-page/product_page.css"> <div class="flex px-3 mb-20"> <div class="flex items-center w-1/2 h-12"> <ul class="breadcrumb"> <li><a href="index.html">Home</a></li> <li><a href="' + category + '.html">' + category + '</a></li> <li><span class="text-red">' + listing.name + '</span></li> </ul> </div> <div class="flex items-center justify-end w-1/2 h-12 pr-6"> <div id="social-bubble"> <ul> <li> <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe> </li> <li> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Nice website!" data-url="https://val.codes/portfolio/flippin-supreme" data-via="ricardojames51" data-hashtags="FlippinSurpreme" data-related="" data-show-count="false"></a> </li> </ul> </div> </div> </div> <div class="flex mb-4"> <div class="flex justify-center w-full h-12 uppercase text-4xl px-6">' + listing.name + '</div> </div> <div class="flex justify-center mb-8"> <div class="w-1/4 mx-6"> <img class="w-full" src="' + listing.imgSrc + '" alt="' + listing.imgAlt + '"> </div> <div class="flex items-center w-1/4 text-2xl pl-3"> <div class="flex flex-col"> <div class="flex flex-row"> <div id="buyNow" class="flex w-1/2 justify-center rounded-lg uppercase px-4 py-4 m-2"> Buy $' + listing.askPrice + ' </div> <div id="bid" class="flex w-1/2 justify-center rounded-lg uppercase px-4 py-4 m-2"> Bid </div> </div> <div class="product-props bg-red text-white px-4 py-4 m-2"> Next Bidding Closing: 2 hours </div> <div class="product-props bg-red text-white px-4 py-4 m-2"> MSRP: $' + listing.askPrice + ' </div> <form id="buyForm" class="bg-white px-8 pt-6 pb-8 mb-4"> <label class="flex justify-center text-base font-bold mb-3"> Buy Now for $' + listings.askPrice + '? </label> <div class="flex items-center justify-center"> <div id="buyButtonYes" class="flex w-1/4 justify-center rounded-lg text-base uppercase px-2 py-2 mx-1 my-2"> Yes </div> <div id="buyButtonNo" class="flex w-1/4 justify-center rounded-lg text-base uppercase px-2 py-2 mx-1 my-2"> No </div> </div> </form> <form id="bidForm" class="bg-white px-8 pt-6 pb-8 mb-4"> <label id="bidPrice" class="flex justify-center text-base font-bold mb-3"> Place Your Bid </label> <div class="flex items-center justify-center"> <input id="bidInput" class="appearance-none focus:outline-none text-xs border border-grey w-1/2 py-2 px-3 mr-2 leading-none" type="text" placeholder="Enter $"> <div id="submitBidButton" class="flex w-1/4 justify-center rounded text-xs uppercase py-2 mx-1"> Submit </div> </div> </form> </div> </div> </div> <div class="flex mb-4"> <div class="flex justify-center w-full h-12 uppercase text-4xl px-6">Historical Sold Prices</div> </div> <div class="flex justify-center mb-4"> <div class="w-3/4 mx-6 mb-20"> <div id="chart_div" style="height: 500px"></div> </div> </div>';
+    loadChart();
+    $('#buyNow').click(function() {
+      $('#bidForm').hide();
+      $('#buyForm').slideDown();
+    });
+    $('#buyButtonNo').click(function() {
+      $('#buyForm').hide();
+      if ($('#bidPrice').text().startsWith('Your Bid: ')) {
+        $('#bidForm').show();
+      }
+    });
+    $('#bid').click(function() {
+      $('#buyForm').hide();
+      $('#bidForm').slideDown();
+    });
+    $('#submitBidButton').click(function() {
+      $('#bidInput').remove();
+      $('#submitBidButton').remove();
+      $('#bidPrice').css({'color': '#191970', 'font-size': '2rem'});
+      $('#bidPrice').text('Your Bid: $50');
+    })
+}
+
+function loadChart() {
+  google.charts.load('current', { packages: ['corechart', 'line'] });
+  google.charts.setOnLoadCallback(drawBackgroundColor);
+
+  function drawBackgroundColor() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('date', 'Date');
+  data.addColumn('number', 'Sold Prices');
+
+  data.addRows([
+    [new Date(2019, 1, 15), 40], [new Date(2019, 2, 15), 45], [new Date(2019, 3, 15), 60], [new Date(2019, 4, 15), 55], [new Date(2019, 5, 15), 50], [new Date(2019, 6, 15), 40],
+    [new Date(2019, 7, 15), 55], [new Date(2019, 8, 15), 50], [new Date(2019, 9, 15), 65]
+  ]);
+
+  var formatter = new google.visualization.DateFormat({ formatType: 'short' });
+
+  formatter.format(data, 0);
+
+  var options = {
+    series: {
+      0: { color: '#FF0000' }
+    },
+    hAxis: {
+      title: 'Date',
+      format: 'MMM yyyy'
+    },
+    vAxis: {
+      title: 'Range of Prices'
+    },
+    backgroundColor: '#fff5f5'
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+  };
+  }
 </script>
   
 </html>
