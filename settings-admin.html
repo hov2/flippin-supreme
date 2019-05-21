@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flippin' Supreme | Settings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="output.css">
+    <link rel="icon" type="image/png" href="favicon.jpg"/>
+  </head>
+  <body>
+    <nav>
+    </nav>
+    <div id="settingsTabs"></div>
+    <div class="pt-10 pb-5 bg-grey-lighter">
+      <div class="px-32 bg-grey-lighter text-3xl font-bold">SETTINGS</div>
+    </div>
+    <ul class="px-32 mb-10 bg-grey-lighter list-reset flex border-b">
+      <li class="-mb-px mr-1">
+        <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-red font-semibold no-underline" href="settings-admin.html">Manage Users</a>
+      </li>
+      <li class="mr-1">
+        <a class="inline-block py-2 px-4 text-grey hover:text-grey-darker font-semibold no-underline" href="settings-account-admin.html">Account</a>
+      </li>
+    </ul>
+    <div class="px-32">
+      <div style="width: 45rem;">
+        <div class="text-2xl mb-5 pb-2 border-b border-grey" style="width: 45rem;">Users</div>
+        <table class="mb-20">
+          <thead>
+            <tr>
+              <th class="pr-5 pb-3 underline">First Name</th>
+              <th class="pr-5 pb-3 underline">Last Name</th>
+              <th class="pr-5 pb-3 underline">Username</th>
+              <th class="pr-20 pb-3 underline">Email Address</th>
+              <th class="pr-10 pb-3 underline">Password</th>
+              <th class="pr-5 pb-3 underline">Modify</th>
+            </tr>
+          </thead>
+          <tbody id="userList">
+          </tbody>
+       </table>
+       
+      </div>
+    </div>
+    
+    <footer></footer>
+  </body>
+  <script src="script.js"></script>
+  <script src="settingsTabs.js"></script>
+  <script>
+    for (var accounts in storedAccounts1) {
+      var table = document.querySelector("#userList");
+      var row = table.insertRow(0);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+      var cell6 = row.insertCell(5);
+
+      cell1.innerHTML = storedAccounts1[accounts].firstname;
+      cell2.innerHTML = storedAccounts1[accounts].lastname;
+      cell3.innerHTML = storedAccounts1[accounts].username;
+      cell4.innerHTML = storedAccounts1[accounts].email;
+      cell5.innerHTML = storedAccounts1[accounts].password;
+      cell6.innerHTML = '<button class="text-blue underline hover:text-red" onclick="deleteAccount(\'' + accounts + '\');">Delete</button>';
+    }
+
+    function deleteAccount(account) {
+      if (account == activeUserKey1) {
+        var confirmation = confirm("Are you sure? You are about to delete YOUR OWN ACCOUNT.");
+        if (confirmation === true) {
+          delete storedAccounts1[account];
+          logout();
+          window.location = "index.html";
+        }
+      } else {
+        var confirmation = confirm("Are you sure? You are about to delete " + storedAccounts1[account].firstname + ".");
+        if (confirmation === true) {
+          delete storedAccounts1[account];
+          saveSession1();
+          location.reload();
+        }
+      }
+    }
+  </script>
+</html>

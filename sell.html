@@ -16,10 +16,46 @@
         <div class="font-black text-3xl">
           LIST YOUR PRODUCT
         </div>
-        <div class=" py-5" style="border-bottom: 1px solid black;">
+        <div class="py-5 mb-5" style="border-bottom: 1px solid black;">
           Fill out the form below and continue.
         </div>
-        
+        <form>
+            <label class="block text-gray font-bold mb-2">
+                Category
+              </label>
+              <div class="relative">
+                  <select class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray leading-tight focus:outline-none focus:shadow-outline capitalize" id="listCategory">
+                    <option disabled selected value></option>
+                    <option>apparel</option>
+                    <option>footwear</option>
+                    <option>accessories</option>
+                    <option>collectibles</option>
+                  </select>
+             </div>
+            <label class="block text-gray font-bold mb-2">
+              Product name
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray leading-tight focus:outline-none focus:shadow-outline" id="listName" type="text" value="">
+            
+            <label class="block text-gray font-bold mb-2">
+              Buy Now Price
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray leading-tight focus:outline-none focus:shadow-outline" id="listPrice" type="text" placeholder="">
+            <label class="block text-gray font-bold mb-2">
+                Image URL
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 mb-3 text-gray leading-tight focus:outline-none focus:shadow-outline" id="listImage" type="text" placeholder="" oninput="preview()">
+            <label class="block text-gray font-bold mb-2 underline">
+                Image Preview
+              </label>
+              <div id="imagePreview" style="height:100px">
+                
+              </div>
+            <button class="bg-black hover:bg-red text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5 mb-10" type="button" onclick="sell();">
+              Create Auction
+            </button>
+            <span id="listAuctionHelper" class="text-red text-base italic ml-5"></span>
+          </form>
       </div>
     </div>
     <div id="modals"></div>
@@ -27,11 +63,51 @@
   </body>
 
   <script src="script.js"></script>
+  <script src="listings.js"></script>
 
   <!-- jQuery Modal -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <script src="modals.js"></script>
+
+<script>
+// Check if valid image URL
+function isValidURL(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+};
+
+function preview() {
+  var imageURL = document.querySelector("#listImage").value;
+  if (isValidURL(imageURL)) {
+    document.querySelector("#imagePreview").innerHTML = '<img src="' + imageURL + '" class="h-24 border p-2">';
+  }
+}
+
+function sell() {
+  var category = document.querySelector("#listCategory");
+  var productName = document.querySelector("#listName");
+  var price = document.querySelector("#listPrice");
+  var imageURL = document.querySelector("#listImage");
+  var listingsNum = Object.keys(listings1[category.value]).length + 1;
+  if (category.value !== "" && productName.value !== "" && price.value !== "" && imageURL.value !== "") {
+    if (isValidURL(imageURL.value)) { // successful listing
+      console.log("listing is a go!!");
+      listings1[category.value]['listing' + listingsNum] = {
+        name: productName.value,
+        askPrice: price.value,
+        imgSrc: imageURL.value,
+        imgAlt: productName.value,
+        avgSold: '0',
+      }
+      saveSession1();
+    } else {
+      document.querySelector("#listAuctionHelper").innerHTML = "Image must be JPEG, JPG, GIF, or PNG format.";
+    }
+  } else {
+    document.querySelector("#listAuctionHelper").innerHTML = "Missing fields! Please verify details above.";
+  }
+}
+</script>
   
 </html>

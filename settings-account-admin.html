@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flippin' Supreme | Settings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="output.css">
+    <link rel="icon" type="image/png" href="favicon.jpg"/>
+  </head>
+  <body>
+    <nav>
+    </nav>
+    <div class="pt-10 pb-5 bg-grey-lighter">
+      <div class="px-32 bg-grey-lighter text-3xl font-bold">SETTINGS</div>
+    </div>
+    <ul class="px-32 mb-10 bg-grey-lighter list-reset flex border-b">
+      <li class="mr-1">
+        <a class="inline-block py-2 px-4 text-grey hover:text-grey-darker font-semibold no-underline" href="settings-admin.html">Manage Users</a>
+      </li>
+      <li class="-mb-px mr-1">
+        <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-red font-semibold no-underline" href="settings-account.html">Account</a>
+      </li>
+    </ul>
+    <div class="px-32">
+      <div style="width: 40rem;">
+        <div class="text-2xl mb-5 pb-2 border-b border-grey" style="width: 40rem;">Account Settings</div>
+        <form>
+            <label class="block text-gray text-sm font-bold mb-2" for="email">
+              Email Address
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray mb-3 leading-tight focus:outline-none focus:shadow-outline" id="settingsEmail" type="text" placeholder="">
+          <label class="block text-gray text-sm font-bold mb-2" for="password">
+              Old Password
+          </label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray mb-3 leading-tight focus:outline-none focus:shadow-outline" id="settingsOldPassword" type="password" placeholder="">
+          <label class="block text-gray text-sm font-bold mb-2" for="password">
+              New Password
+          </label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray mb-3 leading-tight focus:outline-none focus:shadow-outline" id="settingsNewPassword" type="password" placeholder="">
+          <label class="block text-gray text-sm font-bold mb-2" for="password">
+              Confirm New Password
+          </label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray mb-3 leading-tight focus:outline-none focus:shadow-outline" id="settingsConfirmPassword" type="password" placeholder="">
+          <button class="bg-black hover:bg-red text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-5 mb-10" type="button" onclick="updateAccount();">
+            Update account
+          </button>
+          <span id="loginProfileHelper" class="text-red text-base italic ml-5"></span>
+        </form>
+        
+      </div>
+    </div>
+    
+    <footer></footer>
+  </body>
+  <script src="script.js"></script>
+  <script>
+    document.querySelector("#settingsEmail").value = activeAccount1.email;
+    document.querySelector("#settingsEmail").value = activeAccount1.email;
+    // if passwords match, then run function
+    function updateAccount() {
+      var oldPassword = document.querySelector("#settingsOldPassword");
+      var newPassword = document.querySelector("#settingsNewPassword");
+      var confirmPassword = document.querySelector("#settingsConfirmPassword");
+      var email = document.querySelector("#settingsEmail");
+      // NEED TO FIX: if new password is entered correctly, new email won't save at the same time
+      if (oldPassword.value == "" && newPassword.value == "" && confirmPassword.value == "") {
+        if (email.value == "") {
+          document.getElementById("loginProfileHelper").innerHTML = "All fields are empty!";
+        } else { // if user entered valid email
+          if (isValidEmail(email.value)) {
+            activeAccount1.email = email.value
+            storedAccounts1[activeUserKey1] = activeAccount1;
+            saveSession1();
+            document.getElementById("loginProfileHelper").innerHTML = "Saved!";
+          } else {
+            document.getElementById("loginProfileHelper").innerHTML = "Please enter a valid email address.";
+          }
+        }
+      } else {
+        if (oldPassword.value !== "" && newPassword.value !== "" && confirmPassword.value !== "" && activeAccount1.password == oldPassword.value && newPassword.value == confirmPassword.value) {
+          activeAccount1.password = newPassword.value;
+          storedAccounts1[activeUserKey1] = activeAccount1;
+          saveSession1();
+          document.getElementById("loginProfileHelper").innerHTML = "Saved!";
+        } else {
+          document.getElementById("loginProfileHelper").innerHTML = "Invalid passwords, please try again.";
+        }
+      }
+    }
+
+    function isValidEmail(mail) {
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+        {
+          return true;
+        }
+          return false;
+      }
+  </script>
+</html>
