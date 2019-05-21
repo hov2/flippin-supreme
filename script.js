@@ -76,11 +76,14 @@ var storedAccounts = { // "demoAccounts"
     }
 };
 
+
+
 function saveSession1() {
     var saveSession = {
         activeAccount1: activeAccount1,
         storedAccounts1: storedAccounts1,
         activeUserKey1: activeUserKey1,
+        listings1: listings1,
     };
     localStorage.setItem("saveSession", JSON.stringify(saveSession));
 }
@@ -89,19 +92,23 @@ var savedSession = JSON.parse(localStorage.getItem("saveSession"));
 var storedAccounts1;
 var activeAccount1;
 var activeUserKey1;
+var listings1;
 
 
 if (savedSession == null) {
     storedAccounts1 = storedAccounts;
+    listings1 = listings;
     // initialize session data
     var saveSession = {
         activeAccount1: activeAccount,
         storedAccounts1: storedAccounts,
         activeUserKey1: activeUserKey,
+        listings1: listings,
     };
     localStorage.setItem("saveSession", JSON.stringify(saveSession));
 } else {
     storedAccounts1 = savedSession.storedAccounts1;
+    listings1 = savedSession.listings1;
     activeAccount1 = savedSession.activeAccount1;
     activeAccount = activeAccount1;
     activeUserKey1 = savedSession.activeUserKey1;
@@ -131,6 +138,11 @@ if (activeUserKey == null) { // if not logged in
     myaccount.innerHTML = '<a href="#ex3" rel="modal:open" class="inline-block text-black mt-4 mr-3 no-underline p-1 rounded border border-black hover:text-red hover:border-red"> Sell </a>  <a href="#ex1" rel="modal:open" class="inline-block text-black mt-4 no-underline p-1 hover:text-red">Login</a> / <a href="#ex2" rel="modal:open" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red">Register</a>';
 } else { // if logged in
     myaccount.innerHTML = '<a href="sell.html" id="navSell" class="inline-block text-black mt-4 mr-3 no-underline p-1 rounded border border-black hover:text-red hover:border-red"> Sell </a>  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">    <a href="settings.html" id="navSet" class="inline-block text-black mt-4 ml-3 no-underline p-1 hover:text-red"><i class="fas fa-user-circle mr-2" style="font-size:1.2rem"></i> <span id="settingsName">Settings</span></a> / <a href="#" onclick="logout();" class="inline-block text-black mt-4 mr-3 no-underline p-1 hover:text-red">Sign Out</a>';
+}
+
+// Check if admin
+if (storedAccounts1[activeUserKey1].type === "admin") {
+    document.getElementById("navSet").href = "settings-admin.html"
 }
 
 // Check active page, style active nav link 
@@ -170,7 +182,7 @@ function logout() {
 // Reset demo function
 function resetDemo() {
     localStorage.clear();
-    location.reload();
+    window.location = "index.html";
   }
 
 // Login function
