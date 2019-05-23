@@ -107,3 +107,7 @@ nav ul li ul li {
    clear: both;
  width: 100%;
 }
+
+body {
+ background-color: white;
+}
