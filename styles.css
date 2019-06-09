@@ -108,3 +108,12 @@ nav ul li ul li {
  width: 100%;
 }
 
+/* social buttons styling */
+#social-bubble ul {
+  list-style:none;
+}
+
+#social-bubble ul li {
+  display: inline;
+}
+

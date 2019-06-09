@@ -76,8 +76,6 @@ var storedAccounts = { // "demoAccounts"
     }
 };
 
-
-
 function saveSession1() {
     var saveSession = {
         activeAccount1: activeAccount1,
@@ -128,6 +126,10 @@ function titleCase(str) {
 var nav = document.querySelector("nav");
 nav.innerHTML = '<div class="flex items-center justify-between flex-wrap p-6 shadow-md sticky"> <a href="index.html" class="text-black no-underline font-semibold tracking-tight"><img src="img/flippin-supreme-logo.jpg" class="align-bottom" style="height: 1.8rem"></a> <div class="text-sm"><ul class="inline-block mr-3"> <li><a id="navAbout" href="about.html" class="text-black hover:text-red">About</a></li>  <li><span id="navBrowse" class="text-black cursor-default">Browse</span> <ul class="dropdown shadow-lg"> <li><a href="apparel.html" class="text-black hover:text-red">Apparel</a></li> <li><a href="footwear.html" class="text-black hover:text-red">Footwear</a></li> <li><a href="accessories.html" class="text-black hover:text-red">Accessories</a></li> <li><a href="collectibles.html" class="text-black hover:text-red">Collectibles</a></li> </ul> </li> </ul> <span id="myaccount" class=""></span> </div> </div>';
 
+// Display social buttons
+var social = document.querySelector("#social");
+social.innerHTML += `<div id="social-bubble"><ul><li class="mx-1"><iframe src="https://www.facebook.com/plugins/share_button.php?href=https://val.codes/flippin-supreme/&layout=button&size=small&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe></li><li class="mx-1"><a class="twitter-share-button" href="https://twitter.com/intent/tweet" data-url="https://val.codes/flippin-supreme/" data-text="Check out Flippin Supreme for exclusive Supreme products!" data-hashtags="FlippinSurpreme" data-related="" data-show-count="false"></a></li></ul></div>`
+
 // Display footer
 var footer = document.querySelector("footer");
 footer.innerHTML += '<div class="w-full sticky bg-black text-white p-20"><button class="text-red rounded p-3 font-bold bg-grey hover:text-white hover:bg-red text-base" onclick="resetDemo()">RESET DEMO</button> </div>';
@@ -145,7 +147,7 @@ if (storedAccounts1[activeUserKey1].type === "admin") {
     document.getElementById("navSet").href = "settings-admin.html"
 }
 
-// Check active page, style active nav link 
+// Check active page, style active nav link
 var path = window.location.pathname;
 var pagename = path.split("/").pop();
 if (pagename === "about.html") {
@@ -186,7 +188,7 @@ function logout() {
 function resetDemo() {
     localStorage.clear();
     window.location = "index.html";
-  }
+}
 
 // Login function
 function login() {
@@ -298,22 +300,20 @@ function register() {
             listings: [],
         }
         activeUserKey1 = ['user' + userNum];
-        activeAccount1 = storedAccounts1['user' + userNum]; 
-      saveSession1();
-      location.reload();
+        activeAccount1 = storedAccounts1['user' + userNum];
+        saveSession1();
+        location.reload();
     }
-    
-  }
+}
 
-  function isValidEmail(mail) {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
-      {
+function isValidEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
         return true;
-      }
-        return false;
     }
+    return false;
+}
 
-  function registerToSell() {
+function registerToSell() {
     var newFirstName = document.getElementById("grid-first-name2").value;
     var newLastName = document.getElementById("grid-last-name2").value;
     var newPassword = document.getElementById("grid-password2").value;
@@ -385,9 +385,8 @@ function register() {
             listings: [],
         }
         activeUserKey1 = ['user' + userNum];
-        activeAccount1 = storedAccounts1['user' + userNum]; 
-      saveSession1();
-      location.reload();
+        activeAccount1 = storedAccounts1['user' + userNum];
+        saveSession1();
+        location.reload();
     }
-    
-  }
+}
